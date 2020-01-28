@@ -38,13 +38,18 @@ $(document).ready(function(){
     toDoList.addToDo(itemToDo)
     console.log(toDoList.toDos)
    
-    $("#checkboxList").append("<input type='checkbox'>" + toDoList.toDos[toDoList.toDos.length-1].itemTitle + "<br>")
+    $("#result").prepend("<ul>" + "</ul>").append("<li>" + "<input type='checkbox' name='toDoItem'>" + toDoList.toDos[toDoList.toDos.length-1].itemTitle + "</li>")
     // for (var i = 0; i < toDos.length; i += 1)
   });
 
 
-  $("form#checkboxList").submit(function(event){
-
+  $("#itemRemoval").click(function () {
+    $("input:checkbox[name=toDoItem]:checked").each(function(){
+      var toDoItem = $(this).val();
+      $("li").remove(toDoItem);
+      
+      
+    });
 
   });
 });
